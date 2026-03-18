@@ -1,9 +1,8 @@
 [project]
-name = "clionprojects"
+name = "SparkDB waitlist"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.14"
+description = "SparkDB waitlist API"
+requires-python = ">=3.12"
 dependencies = [
     "dotenv>=0.9.9",
     "fastapi[standard]>=0.135.1",

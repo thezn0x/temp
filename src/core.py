@@ -17,6 +17,10 @@ def load_waitlist(name:str, email:str):
         email_match = re.match(r"[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", email)
         if email_match and name:
             with db.transaction() as conn:
+                check = db.select("waitlist", where={"name":name, "email":email}, conn=conn)
+                if check:
+                    logger.error(f"User [{name}]({email}) already joined waitlist")
+                    return False
                 db.insert("waitlist",{
                     "name":name,
                     "email":email
